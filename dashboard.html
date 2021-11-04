@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="main.css">
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="dashboard.js"></script>
+    <title>Dashboard</title>
+    
+</head>
+<body>
+    <input type="checkbox" name="" id="menu-toggle">
+    <div class="overlay">
+        <label for="menu-toggle">
+            <!-- <span class="las la-cancel"></span> -->
+        </label>
+    </div>
+
+    <div class="sidebar">
+        <div class="sidebar-container">
+            <div class="brand">
+                <h2>
+                    <span class="lab la-staylinked" style="width: 24px;"></span>
+                    Expense Tracker
+                </h2>
+            </div>
+            
+            <div class="sidebar-avatar">
+                <div>
+                    <img src="./Images/profile.svg" alt="" srcset="">
+                </div>
+                <div class="avatar-info" >
+                    <div class="avatar-text" >
+                        <h4 id="name"></h4>
+                        <!-- <small>10101010010</small> -->
+                    </div>
+                    <span class="las la-angle-double-down"></span>
+                </div>                   
+
+            </div>
+            
+            <div class="sidebar-menu">
+                <ul>
+                    <li>
+                        <a href="" class="active" id="ana" >
+                            <span class="las la-chart-bar"></span>
+                            <span>Analytics</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="chatbotfunction()">
+                            <span class="lab la-rocketchat" ></span>
+                            <span>Chatbot</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="functionon()" id="anchor1">
+                            <span class="las la-hand-point-right"></span>
+                            <span>Income</span>
+                        </a>
+                    </li>
+                    <li>
+                        
+                        <a href="#" onclick="chatbotfunction()">
+                            <span class="las la-user"></span>
+                            <span>Account</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="chatbotfunction()">
+                            <span class="las la-hands-helping"></span>
+                            <span>Contact us</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar-card">
+                <div class="sidebar-card-icon">
+                    <span class="las la-code"></span>
+                </div>
+                <div>
+                    <h4>&copy; Expense Tracker</h4>
+                    <p>All Rights Reserved</p>
+                </div>
+                <!-- <button class="btn btn-main "><i class="fab fa-linkedin"></i></button> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content" id="analytics"  >
+        <header>
+            <div class="header-title-wrapper">
+                <label for="menu-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+                <div  class="header-title">
+                    <h1>Analytics</h1>
+                   <p> Display analytics of your Income </p>
+                </div>
+            </div>
+            <div class="header-action">
+                    <button class="btn btn-main" onclick="logout()">
+                        Logout
+                    </button>
+            </div>
+            
+        </header>
+      
+       
+      <main>
+
+<section >
+    <h3 class="section-head">Overview</h3>
+            <div class="analytics">
+                <div class="analytic">
+                    <div class="analytic-icon">
+                        <span class="las la-money-bill-wave-alt"></span>
+                    </div>
+                    <div class="analytic-info">
+                        <h4 id="totalincomeofclient"style="color: black;font-weight: 600; ">Total Salary</h4>
+                        <h1 id="totalincome1" >NaN</h1>
+                    </div>
+                </div>
+                <div class="analytic">
+                    <div class="analytic-icon">
+                        <span class="las la-money-bill"></span>
+                    </div>
+                    <div class="analytic-info">
+                        <h4 style="color: red; font-weight: 600;">Total Spent</h4>
+                        <h1 id="spentIncome1">NAN</h1>
+                    </div>
+                </div>
+
+                <div class="analytic">
+                    <div class="analytic-icon">
+                        <span class="las la-rupee-sign"></span>
+                    </div>
+                    <div class="analytic-info">
+                        <h4 style="color: rgb(0, 224, 0); font-weight: 600;">Total Saved</h4>
+                        <h1 id="savedIncome1">NAN</h1>
+                    </div>
+                </div>
+
+                <div class="analytic">
+                    <div class="analytic-icon">
+                        <span class="las la-arrow-circle-up"></span>
+                    </div>
+                    <div class="analytic-info">
+                        <h4 style="font-weight: 600;">Customers</h4>
+                        <h1>Waiting...</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<section>            
+    <div class="block-grid">
+                <div class="revenue-card">
+                    <h3 class="section-head">Total Revenue</h3>
+                    <div class="revenue-content">
+                    <div class="rev-info">
+                     
+                        <h1></h1>
+                    </div>
+                    <div class="rev-sum">
+                        <h4>Total Income</h4>
+                        <h2 id="totalincome2">NAN</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="graph-card">
+                <h3 class="section-head">Graph</h3>
+                <div class="graph-content">
+                    <div class="graph-head">
+                        <div class="icons-wrapper">
+                            <div class="icon">
+                                <span class="las la-eye text-main"></span>
+                            </div>
+                            <div class="icon">
+                                <span class="las la-clock text-success"></span>
+                            </div>
+                        </div>
+                        <div class="graph-select">
+                            <select name="" id="">
+                                <option value="">November</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="graph-board">
+                        <canvas id="revenueChart" width="80px" height="50px"></canvas>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        </main>
+    </div>
+    <!-- MAin content 2 starts from here  -->
+    <div class="main-content" id="chatbot" style="display: none;">
+        <header>
+            <div class="header-title-wrapper">
+                <label for="menu-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+                <div  class="header-title">
+                    <h1>Income</h1>
+                   <p>Enter your income to see results:)</p>
+                </div>
+            </div>
+            <div class="header-action">
+                    <button class="btn btn-main"  onclick="logout()" >
+                        Logout
+                    </button>
+            </div>
+            
+        </header>
+      
+       
+      <main>
+
+<section >
+
+    <form onsubmit="incomesubmit(event)" id="incomesubmitform">
+        <label class = "section-head-1"for="fname">Enter total Income</label><br>
+        <input class="rev-sum-1" type="number" id="input1" name="fname"  autocomplete="off" required><br>
+        <button class="btn btn-main-1" type="submit" id="incomebutton">
+            Submit
+        </button>
+        </form>
+
+        <form onsubmit="moneyspent(event)" id="spentsubmitform">
+        <label  class="section-head-1"for="lname">Enter money you spent </label><br>
+        <input class = "rev-sum-1"type="number" id="input2" name="lname" autocomplete="off" required >
+        <button class="btn btn-main-1" type="submit" id="spentbutton" >
+            Submit
+        </button>
+        
+      </form>
+           
+        </section>
+
+
+        </main>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
+
+
+    <script>
+        let ctx = document.querySelector("#revenueChart");
+    
+        let revChart = new Chart(ctx , {
+            type:"line",
+            data:{
+                labels:["Sept 1", "Sept 1","Sept 1" ,"Sept 1","Sept 1"],
+                datasets:[{
+                    label:"Total Saved",
+                    borderColor:"green",
+                    borderWidth:"3",
+                    backgroundColor:"rgba(235 ,247 , 245 , 0.5)",
+                    data:[0,30,60,25,60,25,50,10]
+                },
+                {
+                    label:"Total Spent",
+                    borderColor:"red",
+                    borderWidth:"3",
+                    backgroundColor:"rgba(235 ,238 , 253 , 0.5)",
+                    data:[3,20,27,34,62,65,51,90]   
+                }
+            ]
+            },
+            Options:{
+                responsive:true,
+                tolltips:{
+                    intersect:false,
+                    node:"index",
+                }
+            }
+
+        });
+    </script>
+</body>
+</html>
